@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:base="clr-namespace:AppDemoLuigi.Views"
+             xmlns:control="clr-namespace:AppDemoLuigi.Views.Controls"
+             x:Class="AppDemoLuigi.Views.HomePage" Title="Home">
+    <AbsoluteLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            
+        </StackLayout>
+        <!--load-->
+        <ActivityIndicator IsRunning="False" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional">
+
+        </ActivityIndicator>
+    </AbsoluteLayout>
+</base:BaseContentPage>

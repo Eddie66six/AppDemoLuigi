@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:control="clr-namespace:AppDemoLuigi.Views.Controls"
+             xmlns:base="clr-namespace:AppDemoLuigi.Views"
+             x:Class="AppDemoLuigi.Views.LoginPage">
+    <AbsoluteLayout>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White"
+                     AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout VerticalOptions="EndAndExpand" Spacing="0" Opacity="{Binding Opacity}">
+                <StackLayout VerticalOptions="StartAndExpand" Padding="50">
+                    <Label Text="G2X" FontSize="50" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" Spacing="0" Padding="30,0,30,0">
+                    <Entry IsEnabled="{Binding IsVisibleOrEnable}" Placeholder="Usuario" Text=""></Entry>
+                    <Entry IsEnabled="{Binding IsVisibleOrEnable}"  Placeholder="Usuario" Text="" IsPassword="True"></Entry>
+                    <control:CustomButton IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding LogarCommand}" Text="Entrar" BackgroundColor="Transparent" HeightRequest="40" Margin="0,20,0,0"></control:CustomButton>
+                </StackLayout>
+                <StackLayout Spacing="0" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                    <control:CustomButton IsEnabled="{Binding IsVisibleOrEnable}" Text="Esqueci minha senha" FontSize="12" BackgroundColor="Transparent"></control:CustomButton>
+                    <control:CustomButton IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding OpenModalCommand}" Text="Nao tenho cadastro" FontSize="12" BackgroundColor="Transparent"></control:CustomButton>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <!--modal-->
+        <control:BaseModalPage>
+            <Frame HasShadow="True" Margin="30" Padding="0" Opacity="{Binding Opacity}">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Padding="10">
+                        <Label Text="Cadastro" TextColor="Black"></Label>
+                    </StackLayout>
+                    <ScrollView Padding="20">
+                        <StackLayout>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Cpf}" FontSize="12" Placeholder="Cpf"></Entry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Senha}" FontSize="12" Placeholder="Senha"></Entry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Nome}" FontSize="12" Placeholder="Nome Completo"></Entry>
+                            <StackLayout Spacing="0" Orientation="Horizontal">
+                                <Label Text="Data de nascimento" FontSize="12" Margin="5,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
+                                <DatePicker IsEnabled="{Binding IsVisibleOrEnable}" Date="{Binding DataNascimento}" HorizontalOptions="EndAndExpand"></DatePicker>
+                            </StackLayout>
+                            <control:CustomEntry FontSize="12" Placeholder="Cep" IsEnabled="{Binding IsVisibleOrEnable}"
+                                Text="{Binding Cep}" IsUnfocused="{Binding ObeterEnderecoCommand}"></control:CustomEntry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Bairro}" FontSize="12" Placeholder="Bairro"></Entry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Endereco}" FontSize="12" Placeholder="Endereço"></Entry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Cidade}" FontSize="12" Placeholder="Cidade"></Entry>
+                            <Entry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Uf}" FontSize="12" Placeholder="Uf"></Entry>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Margin="0,0,10,0">
+                        <control:CustomButton IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding CloseModalCommand}" Text="Cancelar" BackgroundColor="Transparent"></control:CustomButton>
+                        <control:CustomButton IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding CloseModalCommand}" Text="Salvar" BackgroundColor="Transparent"></control:CustomButton>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </control:BaseModalPage>
+        <!--load-->
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="True" Color="Blue" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional">
+        </ActivityIndicator>
+    </AbsoluteLayout>
+</base:BaseContentPage>
